@@ -32,6 +32,16 @@ export default class Form extends Component{
 
   }
 
+  addInput = ()=>{
+    //add input to database
+    this.setState({
+      imgUrl: '',
+      productName: '',
+      productPrice: 0,
+    })
+    document.getElementById("userInput").reset()
+  }
+
   render(){
 
     return <div>
