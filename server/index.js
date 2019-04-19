@@ -13,6 +13,10 @@ massive(CONNECTION_STRING).then(dbInstance =>{
 
 app.use(express.json())
 
+
+
+app.get('/api/inventory', controller.getAll)
+
 app.listen(PORT, ()=>{
   console.log(`listening on port ${PORT}`)
 })
