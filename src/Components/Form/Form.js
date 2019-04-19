@@ -1,59 +1,86 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
-export default class Form extends Component{
-  constructor(){
+export default class Form extends Component {
+  constructor() {
     super()
-    this.state = {
-      imgUrl: '',
-      productName : '',
-      productPrice : 0,
-
-    }
+    this.state =
+      {
+        
+        
+          img_url: '',
+          product_name: '',
+          product_price: 0,
+        
+      }
 
   }
 
-  handleChange= (event)=>{
-    let {value, name} = event.target
-    console.log('name',[name], 'value',value)
+  handleChange = (event) => {
+    let { value, name } = event.target
+    console.log('name', [name], 'value', value)
     this.setState({
       [name]: value
     })
     console.log(this.state)
   }
 
-  clearInput =()=>{
+  clearInput = () => {
+    console.log('clearing boxes')
     this.setState({
-      imgUrl: '',
-      productName: '',
-      productPrice: 0,
+      img_url: '',
+      product_name: '',
+      product_price: 0,
     })
-    document.getElementById("userInput").reset()
+    
 
 
   }
 
-  addInput = ()=>{
-    //add input to database
+  addInput = () => {
+    console.log('adding product',this.state)
+    let product = this.state
+    this.props.addProduct(product)
     this.setState({
-      imgUrl: '',
-      productName: '',
-      productPrice: 0,
+      img_url: '',
+      product_name: '',
+      product_price: 0,
     })
-    document.getElementById("userInput").reset()
+     
   }
 
-  render(){
+  render() {
 
     return <div>
-      <img src = {this.state.imgUrl} onError = {()=>this.src='http://chittagongit.com//images/image-error-icon/image-error-icon-5.jpg'} alt ='' width = "200" height = "200"
-      /> 
-      <form id = "userInput">
-      <input name ="imgUrl" type = "text"  className = "img-url" placeholder = "image url" onChange = {this.handleChange}></input>
-      <input name = "productName" onChange = {this.handleChange}  className = "product-name" placeholder = "product name"></input>
-      <input name = "productPrice"onChange = {this.handleChange} className = "product-price" placeholder = "price"></input>
-      <button onClick = {this.clearInput}>Cancel</button>
-      <button>Add</button>
-      </form>
+      <img src={this.state.img_url} onError={() => this.src = 'http://chittagongit.com//images/image-error-icon/image-error-icon-5.jpg'} alt='' width="200" height="200"
+      />
+      <div id="userInput">
+        <input
+          name="img_url"
+          type="text"
+          className="img-url"
+          placeholder="image url"
+          value ={this.state.img_url}
+          onChange={this.handleChange}>
+        </input>
+
+        <input name="product_name"
+          onChange={this.handleChange}
+          className="product-name"
+          value ={this.state.product_name}
+          placeholder="product name">
+        </input>
+
+        <input
+          name="product_price"
+          onChange={this.handleChange}
+          className="product-price"
+          value = {this.state.product_price}
+          placeholder="price">
+        </input>
+
+        <button onClick={this.clearInput}>Cancel</button>
+        <button onClick={this.addInput}>Add</button>
+      </div>
     </div>
 
   }

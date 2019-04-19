@@ -23,11 +23,21 @@ class App extends Component {
       console.log(`error ${err}`)
     })
   }
+  addProduct=(product)=>{
+    axios.post('/api/product', product).then((res)=>{
+      this.setState({
+        inventoryList : res.data
+      })
+    })
+    .catch((err)=>{
+      console.log(`error ${err}`)
+    })
+  }
   render() {
     return (
       <div>
         <Dashboard inventoryList = {this.state.inventoryList}/>
-        <Form />
+        <Form addProduct = {this.addProduct}/>
         <Header />
 
       </div>

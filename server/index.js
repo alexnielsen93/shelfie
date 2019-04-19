@@ -16,6 +16,7 @@ app.use(express.json())
 
 
 app.get('/api/inventory', controller.getAll)
+app.post('/api/product', controller.addProduct)
 
 app.listen(PORT, ()=>{
   console.log(`listening on port ${PORT}`)

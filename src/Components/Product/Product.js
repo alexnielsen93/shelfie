@@ -3,8 +3,10 @@ import React, {Component} from 'react'
 export default class Product extends Component{
   
 componentDidMount(){
-  
+  console.log(this.state.id)
 }
+
+
   render(){
   let {product} = this.props
   console.log(product)
@@ -20,8 +22,12 @@ componentDidMount(){
       <div>
         <h2>{product.product_price}</h2>
       </div>
-      <div></div>
-      <div></div>
+      <div>
+        <button>Edit</button>
+      </div>
+      <div>
+        <button >Delete</button>
+      </div>
     </div>
     )
   }
